@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Generator</title>
+    <link rel="stylesheet" href="static/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1>QR Code Generator</h1>
+        <p class="subtitle">Enter a link or text to create a scannable QR code</p>
+        <form method="POST">
+            <input type="text" name="data" placeholder="Enter a link or text (e.g., https://example.com)" required>
+            <button type="submit">Generate QR Code</button>
+        </form>
+        {% if error %}
+            <p class="error">{{ error }}</p>
+        {% endif %}
+        {% if qr_image %}
+            <div class="qr-container">
+                <img src="{{ url_for('static', filename=qr_image) }}" alt="QR Code" class="qr-code">
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
